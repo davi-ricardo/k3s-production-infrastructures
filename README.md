@@ -1,4 +1,4 @@
-# RemoteOps Infrastructure
+# k3s-cluster-infrastructure
 
 Infraestrutura Kubernetes responsável pela execução, administração e documentação dos serviços do ambiente RemoteOps.
 

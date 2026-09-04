@@ -1,0 +1,6 @@
+NAME              STATUS   AGE
+default           Active   19d
+kube-node-lease   Active   19d
+kube-public       Active   19d
+kube-system       Active   19d
+portainer         Active   15d

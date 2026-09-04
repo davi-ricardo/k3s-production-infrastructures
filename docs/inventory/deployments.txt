@@ -1,0 +1,17 @@
+NAMESPACE     NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+default       glpi-app                 1/1     1            1           17d
+default       glpi-db                  1/1     1            1           17d
+default       grafana                  1/1     1            1           17d
+default       rustdesk-api             1/1     1            1           16d
+default       rustdesk-frontend        1/1     1            1           16d
+default       rustdesk-hbbr            1/1     1            1           16d
+default       rustdesk-hbbs            1/1     1            1           16d
+default       rustdesk-postgres        1/1     1            1           16d
+default       zabbix-postgres          1/1     1            1           16d
+default       zabbix-server            1/1     1            1           16d
+default       zabbix-web               1/1     1            1           16d
+kube-system   coredns                  1/1     1            1           19d
+kube-system   local-path-provisioner   1/1     1            1           19d
+kube-system   metrics-server           1/1     1            1           19d
+kube-system   traefik                  1/1     1            1           19d
+portainer     portainer-agent          1/1     1            1           15d

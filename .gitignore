@@ -1,0 +1,28 @@
+# Kubernetes credentials
+.kube/
+*.kubeconfig
+kubeconfig*
+cluster.yaml
+
+# Secrets
+*.secret.yaml
+*.secrets.yaml
+.env
+.env.*
+!.env.example
+
+# Local state
+*.log
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Sensitive inventory
+docs/inventory/secrets.txt

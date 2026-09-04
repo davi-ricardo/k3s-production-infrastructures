@@ -1,0 +1,6 @@
+NAMESPACE     NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+kube-system   daemonset.apps/svclb-traefik-b541a5e4   1         1         1       1            1           <none>          19d
+
+NAMESPACE     NAME                                 STATUS     COMPLETIONS   DURATION   AGE
+kube-system   job.batch/helm-install-traefik       Complete   1/1           43s        19d
+kube-system   job.batch/helm-install-traefik-crd   Complete   1/1           32s        19d

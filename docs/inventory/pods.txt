@@ -1,0 +1,20 @@
+NAMESPACE     NAME                                      READY   STATUS      RESTARTS      AGE   IP              NODE         NOMINATED NODE   READINESS GATES
+default       glpi-app-744ddddb5f-5fqrm                 1/1     Running     1 (16d ago)   17d   10.42.0.24      srv1309476   <none>           <none>
+default       glpi-db-859c8887b4-h25l5                  1/1     Running     1 (16d ago)   17d   10.42.0.23      srv1309476   <none>           <none>
+default       grafana-59db98c89c-475df                  1/1     Running     1 (16d ago)   17d   10.42.0.21      srv1309476   <none>           <none>
+default       rustdesk-api-696d4f8758-c6q76             1/1     Running     0             16d   10.42.0.45      srv1309476   <none>           <none>
+default       rustdesk-frontend-5899789f7c-m7k2h        1/1     Running     0             16d   10.42.0.44      srv1309476   <none>           <none>
+default       rustdesk-hbbr-69b95c5875-8c5rf            1/1     Running     0             16d   10.42.0.38      srv1309476   <none>           <none>
+default       rustdesk-hbbs-89c7bcc7c-jm44q             1/1     Running     0             16d   76.13.174.204   srv1309476   <none>           <none>
+default       rustdesk-postgres-6f4647c866-qcvbs        1/1     Running     1 (16d ago)   16d   10.42.0.43      srv1309476   <none>           <none>
+default       zabbix-postgres-7d58466b5b-l77ww          1/1     Running     1 (16d ago)   16d   10.42.0.32      srv1309476   <none>           <none>
+default       zabbix-server-85c5b5fb7d-hqb8j            1/1     Running     0             16d   10.42.0.35      srv1309476   <none>           <none>
+default       zabbix-web-69d5b4f47b-m94d9               1/1     Running     0             16d   10.42.0.34      srv1309476   <none>           <none>
+kube-system   coredns-84b86c58df-z9snz                  1/1     Running     0             15d   10.42.0.71      srv1309476   <none>           <none>
+kube-system   helm-install-traefik-c2khx                0/1     Completed   2 (19d ago)   19d   <none>          srv1309476   <none>           <none>
+kube-system   helm-install-traefik-crd-mxqdh            0/1     Completed   0             19d   <none>          srv1309476   <none>           <none>
+kube-system   local-path-provisioner-58d557dc48-w8rp7   1/1     Running     1 (16d ago)   19d   10.42.0.17      srv1309476   <none>           <none>
+kube-system   metrics-server-6dc596dfb8-7rvb5           1/1     Running     1 (16d ago)   19d   10.42.0.15      srv1309476   <none>           <none>
+kube-system   svclb-traefik-b541a5e4-mncm7              2/2     Running     2 (16d ago)   19d   10.42.0.16      srv1309476   <none>           <none>
+kube-system   traefik-59b7647586-b46xp                  1/1     Running     1 (16d ago)   19d   10.42.0.18      srv1309476   <none>           <none>
+portainer     portainer-agent-f5ffc5-rnthk              1/1     Running     0             15d   10.42.0.72      srv1309476   <none>           <none>

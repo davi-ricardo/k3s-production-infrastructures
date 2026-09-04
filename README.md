@@ -1,6 +1,6 @@
 # k3s-cluster-infrastructure
 
-Infraestrutura Kubernetes responsável pela execução, administração e documentação dos serviços do ambiente RemoteOps.
+Infraestrutura Kubernetes responsável pela execução, administração e documentação dos microserviços Docker.
 
 Este repositório funciona como a **fonte de referência da infraestrutura do cluster K3s**, reunindo manifests, configurações, documentação e procedimentos necessários para administrar o ambiente de forma organizada e reproduzível.
 

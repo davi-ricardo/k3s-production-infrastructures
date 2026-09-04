@@ -1,0 +1,64 @@
+# Storage atual do cluster K3s
+
+## Visão geral
+
+O cluster atualmente não possui PersistentVolumes (PV) ou PersistentVolumeClaims (PVC).
+
+As aplicações utilizam principalmente volumes do tipo hostPath diretamente no nó
+srv1309476.
+
+## GLPI
+
+### glpi-app
+
+config-data
+  /opt/glpi/glpi-prod/config
+
+files-data
+  /opt/glpi/glpi-prod/files
+
+marketplace-data
+  /opt/glpi/glpi-prod/marketplace
+
+### glpi-db
+
+db-data
+  /opt/glpi/glpi-prod/mysql
+
+## RustDesk / RemoteOps
+
+### rustdesk-hbbs
+
+data
+  /opt/rustdesk-saas/data
+
+### rustdesk-postgres
+
+pgdata
+  /opt/rustdesk-saas/pgdata
+
+## Zabbix
+
+### zabbix-postgres
+
+pgdata
+  /var/lib/docker/volumes/glpi-monitoring-stack_postgres_data/_data
+
+### zabbix-server
+
+alertscripts
+  /opt/GLPI-Monitoring-Stack/GLPI-Monitoring-Stack/zabbix/alertscripts
+
+externalscripts
+  /opt/GLPI-Monitoring-Stack/GLPI-Monitoring-Stack/zabbix/externalscripts
+
+## Observações
+
+Os caminhos acima representam dados e configurações atualmente utilizados
+pelos workloads do cluster.
+
+Não realizar migração, remoção ou alteração desses caminhos nesta etapa.
+
+A migração futura de hostPath para armazenamento declarativo com PV/PVC deverá
+ser planejada individualmente para cada aplicação e precedida por backup e
+validação dos dados.

@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rustdesk-api
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: rustdesk-api
+
+  template:
+    metadata:
+      labels:
+        app: rustdesk-api
+
+    spec:
+      containers:
+        - name: api
+          image: rustdesk-saas-api:latest
+          imagePullPolicy: Never
+
+          env:
+            - name: ID_SERVER
+              value: "76.13.174.204"
+
+            - name: RELAY_SERVER
+              value: "76.13.174.204"
+
+            - name: ADMIN_EMAIL
+              value: "administrador"
+
+            - name: TZ
+              value: "America/Cuiaba"
+
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: rustdesk-api-secret
+                  key: DATABASE_URL
+
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: rustdesk-api-secret
+                  key: JWT_SECRET
+
+            - name: RUSTDESK_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rustdesk-api-secret
+                  key: RUSTDESK_KEY
+
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rustdesk-api-secret
+                  key: ADMIN_PASSWORD

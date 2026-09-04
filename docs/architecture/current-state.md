@@ -63,3 +63,18 @@ A existência de referências a esses Services deverá ser investigada antes de 
 8. Planejar Ingress.
 9. Validar alterações fora de produção quando possível.
 10. Aplicar mudanças de forma incremental.
+
+### Validação de dependências
+
+Foi realizada uma busca por referências aos Services `api` e `postgres` nos recursos Kubernetes.
+
+Não foram encontradas referências internas utilizando:
+
+- `api.default`
+- `api:3000`
+- `postgres.default`
+- `postgres:5432`
+
+Os Services continuam presentes no cluster e não serão removidos nesta etapa.
+
+A remoção deverá ser considerada somente após validação adicional de possíveis consumidores externos ou configurações legadas.

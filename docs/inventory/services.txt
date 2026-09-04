@@ -17,3 +17,37 @@ kube-system   metrics-server             ClusterIP      10.43.62.105    <none>  
 kube-system   traefik                    LoadBalancer   10.43.61.225    76.13.174.204   80:32070/TCP,443:30820/TCP   19d
 portainer     portainer-agent            NodePort       10.43.58.222    <none>          9001:30778/TCP               15d
 portainer     portainer-agent-headless   ClusterIP      None            <none>          <none>                       15d
+
+## Services aparentemente redundantes
+
+### api
+
+O Service `api` é do tipo ClusterIP e aponta para os mesmos Pods do
+Service `rustdesk-api`.
+
+Não foram encontradas referências explícitas ao Service `api` nos
+Deployments, ConfigMaps ou Ingresses atuais.
+
+O Service `rustdesk-api` é do tipo NodePort e expõe a mesma aplicação
+na porta 3000.
+
+Estado atual:
+- manter durante a fase de inventário;
+- avaliar remoção posteriormente;
+- não remover sem validação adicional.
+
+### postgres
+
+O Service `postgres` é do tipo ClusterIP e aponta para os mesmos Pods
+do Service `zabbix-postgres`.
+
+Não foram encontradas referências explícitas ao Service `postgres`
+nos Deployments, ConfigMaps ou Ingresses atuais.
+
+O Service `zabbix-postgres` é utilizado pelo Zabbix Server e pelo
+Zabbix Web.
+
+Estado atual:
+- manter durante a fase de inventário;
+- avaliar remoção posteriormente;
+- não remover sem validação adicional.

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rustdesk-hbbs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rustdesk-hbbs
+  template:
+    metadata:
+      labels:
+        app: rustdesk-hbbs
+    spec:
+      hostNetwork: true
+      containers:
+        - name: hbbs
+          image: rustdesk/rustdesk-server:latest
+          imagePullPolicy: Always
+          command:
+            - hbbs
+            - -r
+            - 76.13.174.204:21117
+            - -k
+            - "<SECRET>"
+          volumeMounts:
+            - name: data
+              mountPath: /root
+      volumes:
+        - name: data
+          hostPath:
+            path: /opt/rustdesk-saas/data

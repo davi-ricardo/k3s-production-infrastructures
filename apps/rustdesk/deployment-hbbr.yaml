@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rustdesk-hbbr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rustdesk-hbbr
+  template:
+    metadata:
+      labels:
+        app: rustdesk-hbbr
+    spec:
+      containers:
+        - name: hbbr
+          image: rustdesk/rustdesk-server:latest
+          imagePullPolicy: Always
+          command:
+            - hbbr

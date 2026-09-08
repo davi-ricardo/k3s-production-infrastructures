@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: glpi-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: glpi-db
+  template:
+    metadata:
+      labels:
+        app: glpi-db
+    spec:
+      containers:
+        - name: glpi-mariadb
+          image: mariadb:10.11
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: MARIADB_ROOT_PASSWORD
+              value: "<SECRET>"
+            - name: MARIADB_DATABASE
+              value: "glpidb"
+            - name: MARIADB_USER
+              value: "glpiuser"
+            - name: MARIADB_PASSWORD
+              value: "<SECRET>"
+          volumeMounts:
+            - name: db-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: db-data
+          hostPath:
+            path: /opt/glpi/glpi-prod/mysql

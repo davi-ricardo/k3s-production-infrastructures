@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-server
+  template:
+    metadata:
+      labels:
+        app: zabbix-server
+    spec:
+      containers:
+        - name: zabbix-server
+          image: zabbix/zabbix-server-pgsql:ubuntu-7.4.0
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DB_SERVER_HOST
+              value: "zabbix-postgres"
+            - name: DB_SERVER_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "zabbix"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: zabbix-server-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: zabbix-server-secret
+                  key: POSTGRES_PASSWORD
+            - name: ZBX_SERVER_NAME
+              value: "GLPI-Monitor"
+            - name: TZ
+              value: "America/Sao_Paulo"
+          volumeMounts:
+            - name: alertscripts
+              mountPath: /usr/lib/zabbix/alertscripts
+            - name: externalscripts
+              mountPath: /usr/lib/zabbix/externalscripts
+      volumes:
+        - name: alertscripts
+          hostPath:
+            path: /opt/GLPI-Monitoring-Stack/GLPI-Monitoring-Stack/zabbix/alertscripts
+        - name: externalscripts
+          hostPath:
+            path: /opt/GLPI-Monitoring-Stack/GLPI-Monitoring-Stack/zabbix/externalscripts

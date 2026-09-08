@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-postgres
+  template:
+    metadata:
+      labels:
+        app: zabbix-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_DB
+              value: "zabbix"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: zabbix-server-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: zabbix-server-secret
+                  key: POSTGRES_PASSWORD
+            - name: TZ
+              value: "America/Sao_Paulo"
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: pgdata
+          hostPath:
+            path: /var/lib/docker/volumes/glpi-monitoring-stack_postgres_data/_data

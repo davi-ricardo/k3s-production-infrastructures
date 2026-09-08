@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rustdesk-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rustdesk-postgres
+  template:
+    metadata:
+      labels:
+        app: rustdesk-postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: POSTGRES_USER
+              value: "rustdesk"
+            - name: POSTGRES_PASSWORD
+              value: "<SECRET>"
+            - name: POSTGRES_DB
+              value: "rustdesk"
+            - name: TZ
+              value: "America/Cuiaba"
+            - name: PGTZ
+              value: "America/Cuiaba"
+          volumeMounts:
+            - name: pgdata
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: pgdata
+          hostPath:
+            path: /opt/rustdesk-saas/pgdata
